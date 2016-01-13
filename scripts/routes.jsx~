@@ -1,0 +1,23 @@
+var React = require('react');
+var Router = require('react-router');
+var Route = Router.Route;
+var DefaultRoute = Router.DefaultRoute;
+
+var CaloriesApp = require('./components/CaloriesApp.react.jsx');
+var LoginPage = require('./components/session/LoginPage.react.jsx');
+var MealsPage = require('./components/meals/MealsPage.react.jsx');
+var MealPage = require('./components/meals/MealPage.react.jsx');
+var MealNew = require('./components/meals/MealNew.react.jsx');
+var SignupPage = require('./components/session/SignupPage.react.jsx');
+
+module.exports = (
+  <Route name="app" path="/" handler={CaloriesApp}>
+    <DefaultRoute handler={CaloriesPage} />
+    <Route name="login" path="/login" handler={LoginPage}/>
+    <Route name="signup" path="/signup" handler={SignupPage}/>
+    <Route name="meals" path="/meals" handler={CaloriesPage}/>
+    <Route name="meal" path="/meals/:mealId" handler={MealPage} />
+    <Route name="new-meal" path="/meal/new" handler={MealNew}/>
+  </Route>
+);
+

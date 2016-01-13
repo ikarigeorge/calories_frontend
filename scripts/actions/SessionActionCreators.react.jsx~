@@ -1,0 +1,35 @@
+var CaloriesAppDispatcher = require('../dispatcher/CaloriesAppDispatcher.js');
+var SmallConstants = require('../constants/SmallConstants.js');
+var WebAPIUtils = require('../utils/WebAPIUtils.js');
+
+var ActionTypes = SmallConstants.ActionTypes;
+
+module.exports = {
+
+  signup: function(email, username, password, password_confirmation) {
+    CaloriesAppDispatcher.handleViewAction({
+      type: ActionTypes.SIGNUP_REQUEST,
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation
+    });
+    WebAPIUtils.signup(email, username, password, password_confirmation);
+  },
+
+  login: function(email, password) {
+    CaloriesAppDispatcher.handleViewAction({
+      type: ActionTypes.LOGIN_REQUEST,
+      email: email,
+      password: password
+    });
+    WebAPIUtils.login(email, password);
+  },
+
+  logout: function() {
+    SmallAppDispatcher.handleViewAction({
+      type: ActionTypes.LOGOUT
+    });
+  }
+  
+};
+

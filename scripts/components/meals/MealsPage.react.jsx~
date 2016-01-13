@@ -1,0 +1,80 @@
+var React = require('react');
+var WebAPIUtils = require('../../utils/WebAPIUtils.js');
+var MealStore = require('../../stores/MealStore.react.jsx');
+var ErrorNotice = require('../../components/common/ErrorNotice.react.jsx');
+var MealActionCreators = require('../../actions/MealActionCreators.react.jsx');
+var Router = require('react-router');
+var Link = Router.Link;
+var moment = require('moment');
+
+var MealsPage = React.createClass({
+
+  getInitialState: function() {
+    return { 
+      meals: MealStore.getAllMeals(), 
+      errors: []
+    };
+  },
+ 
+  componentDidMount: function() {
+    MealStore.addChangeListener(this._onChange);
+    MealActionCreators.loadMeals();
+  },
+
+  componentWillUnmount: function() {
+    MealStore.removeChangeListener(this._onChange);
+  },
+
+  _onChange: function() {
+    this.setState({ 
+      meals: MealStore.getAllMeals(),
+      errors: MealStore.getErrors()
+    }); 
+  },
+
+  render: function() {
+    var errors = (this.state.errors.length > 0) ? <ErrorNotice errors={this.state.errors}/> : <div></div>;
+    return (
+      <div>
+        {errors}
+        <div className="row">
+          <MealsList meals={this.state.meals} />
+        </div>
+      </div>
+    );
+  }
+});
+
+var MealItem = React.createClass({
+  render: function() {
+    return (
+      <li className="meal">
+        <div className="meal__name">
+          <Link to="meal" params={ {mealId: this.props.meal.id} }>
+            {this.props.meal.name}
+          </Link>
+        </div>
+        <div className="meal__date">{this.props.meal.date}
+        </div>
+        <div className="meal__time">{this.props.meal.time}
+        </div>
+        <span className="meal__calories"> - {moment(this.props.meal.calories).fromNow()}</span>
+      </li>
+      );
+  }
+});
+
+var Meals = React.createClass({
+  render: function() {
+    return (
+      <ul className="large-8 medium-10 small-12 small-centered columns">
+        {this.props.meals.map(function(meal, index){
+          return <MealItem meal={meal} key={"meal-" + index}/>
+        })}
+      </ul>
+    );
+  }
+});
+
+module.exports = MealsPage;
+

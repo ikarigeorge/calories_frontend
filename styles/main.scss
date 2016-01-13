@@ -1,0 +1,210 @@
+@import 'fonts';
+@import 'spinner';
+@import '../bower_components/foundation/scss/foundation/_functions.scss';
+@import url(http://fonts.googleapis.com/css?family=Raleway:700,400);
+
+$topbar-height: rem-calc(45);
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  font-family: lato;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.modal-dialog {
+ background: #FFF none repeat scroll 0% 0%;
+margin-top: 2em;
+margin-bottom: 2em;
+outline: 0px none;
+min-width: 500px;
+border-radius: 4px;
+}
+
+.Menu {
+  position: relative;
+  margin-right: 50px;
+}
+
+.Menu__MenuOptions {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #FFF;
+  position: absolute;
+}
+
+.Menu__MenuOption {
+  padding: 5px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.Menu__MenuOption--disabled {
+  background-color: #eee;
+}
+
+.Menu__MenuOption--active {
+  background-color: #0aafff;
+}
+
+.Menu__MenuOption--active.Menu__MenuOption--disabled {
+  background-color: #ccc;
+}
+
+.Menu__MenuTrigger {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 5px;
+  background: #FFF;
+}
+
+.new-meal {
+  margin: 10px;
+}
+
+.new-meal__title {
+  input {
+   border: none;
+   box-shadow: none;
+   border-bottom: 2px solid #ccc;
+  }
+}
+
+.new-meal__body {
+  textarea {
+   background-color: #fafafa;
+   border: none;
+   box-shadow: none;
+  }
+}
+
+.new-meal__submit {
+   float:right;
+   margin: 10px;
+}
+
+.new-meal__cancel button {
+   background-color: #cc0000;
+   float:right;
+   margin: 10px;
+}
+
+.new-meal__reset button {
+   background-color: #bfbfbf;
+   float:right;
+   margin: 10px;
+}
+
+.new-meal__delete button {
+   background-color: #cc0000;
+   float:left;
+   margin: 10px;
+}
+
+
+
+button.editButton {
+  background-color: #99ccff;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+button.greyButton{
+   background-color: #bfbfbf;
+   margin-right: 30px;
+}
+
+button.redButton{
+   background-color: #cc0000;
+   padding: 5px;
+}
+
+button.greenButton{
+   background-color: #009900;
+   padding: 5px;
+}
+
+.meal {
+  list-style: none;
+  padding: 10px;
+  margin-top: 10px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.meal__name {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: rem-calc(24);
+  a {
+    color: black;
+  }
+}
+
+.meal__date {
+  font-weight: 400;
+  font-size: rem-calc(14);
+  color: #333;
+  font-style: italic;
+}
+
+.meal__time {
+  font-weight: 400;
+  font-size: rem-calc(12);
+  color: #2E8BA9;
+}
+
+.meal__calories {
+  color: #aaa;
+  font-size: rem-calc(12);
+}
+
+.card {
+  margin-bottom: 1em;
+  padding: 20px;
+  background-color: #ECF0F1;
+  border-bottom: 4px solid #D4D7D8;
+  ul {
+    margin-bottom: 0;
+  }
+}
+
+.card--login {
+  margin-top: 20px;
+}
+
+.card--login__field {
+  label {
+    font-family: lato-light;
+  }
+  input {
+    border-width: 0px;
+    border-left: 4px solid #c2c2c2;
+    box-shadow: none;
+  }
+}
+
+.card--login__submit {
+  width: 100%;
+  margin: 0;
+  margin-top: 10px;
+  font-family: 'Lato'
+}
+
+.error-notice {
+  position: absolute;
+  top: $topbar-height; 
+  width: 100%;
+  z-index: 9999;
+  background-color: #E44646;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+}
+
